@@ -49,6 +49,9 @@ export class TemplateQuestionModalComponent {
             numberOfEntitiesToGiveFeedbackToSetting: template.question.numberOfEntitiesToGiveFeedbackToSetting,
             customNumberOfEntitiesToGiveFeedbackTo: template.question.customNumberOfEntitiesToGiveFeedbackTo || 1,
 
+            minNumberOfEntitiesToGiveFeedbackToSetting: template.question.minNumberOfEntitiesToGiveFeedbackToSetting,
+            customMinNumberOfEntitiesToGiveFeedbackTo: template.question.customMinNumberOfEntitiesToGiveFeedbackTo || 1,
+
             showResponsesTo: template.question.showResponsesTo,
             showGiverNameTo: template.question.showGiverNameTo,
             showRecipientNameTo: template.question.showRecipientNameTo,
@@ -90,6 +93,10 @@ export class TemplateQuestionModalComponent {
 
               numberOfEntitiesToGiveFeedbackToSetting: model.numberOfEntitiesToGiveFeedbackToSetting,
               customNumberOfEntitiesToGiveFeedbackTo: model.customNumberOfEntitiesToGiveFeedbackTo,
+
+              minNumberOfEntitiesToGiveFeedbackToSetting: model.minNumberOfEntitiesToGiveFeedbackToSetting,
+              customMinNumberOfEntitiesToGiveFeedbackTo: model.customMinNumberOfEntitiesToGiveFeedbackTo,
+
 
               showResponsesTo: model.showResponsesTo,
               showGiverNameTo: model.showGiverNameTo,

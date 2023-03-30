@@ -7,6 +7,7 @@ import {
   FeedbackQuestionType, FeedbackResponseDetails, FeedbackTextQuestionDetails,
   FeedbackVisibilityType,
   NumberOfEntitiesToGiveFeedbackToSetting,
+  MinNumberOfEntitiesToGiveFeedbackToSetting,
 } from '../../../types/api-output';
 import { VisibilityControl } from '../../../types/visibility-control';
 import { CommentRowModel } from '../comment-box/comment-row/comment-row.component';
@@ -108,6 +109,9 @@ export class QuestionSubmissionFormComponent implements DoCheck {
 
     numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
     customNumberOfEntitiesToGiveFeedbackTo: 0,
+
+    minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+    customMinNumberOfEntitiesToGiveFeedbackTo: 0,
 
     showGiverNameTo: [],
     showRecipientNameTo: [],

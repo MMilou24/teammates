@@ -38,6 +38,7 @@ import {
   Instructor,
   Instructors,
   NumberOfEntitiesToGiveFeedbackToSetting,
+  MinNumberOfEntitiesToGiveFeedbackToSetting,
   ResponseVisibleSetting,
   SessionVisibleSetting,
   Student,
@@ -166,6 +167,9 @@ export class InstructorSessionEditPageComponent extends InstructorSessionBasePag
 
     numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
     customNumberOfEntitiesToGiveFeedbackTo: 1,
+
+    minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+    customMinNumberOfEntitiesToGiveFeedbackTo: 1,
 
     showResponsesTo: [],
     showGiverNameTo: [],
@@ -628,6 +632,10 @@ export class InstructorSessionEditPageComponent extends InstructorSessionBasePag
       customNumberOfEntitiesToGiveFeedbackTo: feedbackQuestion.customNumberOfEntitiesToGiveFeedbackTo
           ? feedbackQuestion.customNumberOfEntitiesToGiveFeedbackTo : 1,
 
+      minNumberOfEntitiesToGiveFeedbackToSetting: feedbackQuestion.minNumberOfEntitiesToGiveFeedbackToSetting,
+      customMinNumberOfEntitiesToGiveFeedbackTo: feedbackQuestion.customMinNumberOfEntitiesToGiveFeedbackTo
+          ? feedbackQuestion.customMinNumberOfEntitiesToGiveFeedbackTo : 1,
+
       showResponsesTo: feedbackQuestion.showResponsesTo,
       showGiverNameTo: feedbackQuestion.showGiverNameTo,
       showRecipientNameTo: feedbackQuestion.showRecipientNameTo,
@@ -910,6 +918,10 @@ export class InstructorSessionEditPageComponent extends InstructorSessionBasePag
       numberOfEntitiesToGiveFeedbackToSetting: newQuestionModel.numberOfEntitiesToGiveFeedbackToSetting,
       customNumberOfEntitiesToGiveFeedbackTo: newQuestionModel.customNumberOfEntitiesToGiveFeedbackTo
           ? newQuestionModel.customNumberOfEntitiesToGiveFeedbackTo : 1,
+
+      minNumberOfEntitiesToGiveFeedbackToSetting: newQuestionModel.minNumberOfEntitiesToGiveFeedbackToSetting,
+      customMinNumberOfEntitiesToGiveFeedbackTo: newQuestionModel.customMinNumberOfEntitiesToGiveFeedbackTo
+          ? newQuestionModel.customMinNumberOfEntitiesToGiveFeedbackTo : 1,
 
       showResponsesTo: newQuestionModel.showResponsesTo,
       showGiverNameTo: newQuestionModel.showGiverNameTo,

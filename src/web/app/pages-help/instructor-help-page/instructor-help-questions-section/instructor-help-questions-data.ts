@@ -16,6 +16,7 @@ import {
   FeedbackSessionSubmissionStatus,
   FeedbackVisibilityType,
   NumberOfEntitiesToGiveFeedbackToSetting,
+  MinNumberOfEntitiesToGiveFeedbackToSetting,
   ResponseOutput,
   ResponseVisibleSetting,
   SessionVisibleSetting,
@@ -70,6 +71,9 @@ export const EXAMPLE_ESSAY_QUESTION_MODEL: QuestionEditFormModel = {
   customNumberOfEntitiesToGiveFeedbackTo: 0,
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
+  customMinNumberOfEntitiesToGiveFeedbackTo: 0,
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
   showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
   showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
   showRecipientNameTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
@@ -101,6 +105,9 @@ export const EXAMPLE_NUMERICAL_SCALE_QUESTION_MODEL: QuestionEditFormModel = {
 
   customNumberOfEntitiesToGiveFeedbackTo: 0,
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+  customMinNumberOfEntitiesToGiveFeedbackTo: 0,
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
   showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
   showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
@@ -577,6 +584,10 @@ export const EXAMPLE_DISTRIBUTED_POINT_OPTION_MODEL: QuestionEditFormModel = {
   customNumberOfEntitiesToGiveFeedbackTo: 0,
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
+  customMinNumberOfEntitiesToGiveFeedbackTo: 0,
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+
   showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
   showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
   showRecipientNameTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
@@ -766,6 +777,10 @@ export const EXAMPLE_DISTRIBUTED_POINT_RECIPIENT_MODEL: QuestionEditFormModel = 
   customNumberOfEntitiesToGiveFeedbackTo: 0,
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
+  customMinNumberOfEntitiesToGiveFeedbackTo: 0,
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+
   showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
   showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
   showRecipientNameTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
@@ -797,6 +812,10 @@ export const EXAMPLE_TEAM_CONTRIBUTION_QUESTION_MODEL: QuestionEditFormModel = {
 
   customNumberOfEntitiesToGiveFeedbackTo: 0,
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+  customMinNumberOfEntitiesToGiveFeedbackTo: 0,
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
 
   showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT,
     FeedbackVisibilityType.GIVER_TEAM_MEMBERS],
@@ -1045,6 +1064,10 @@ export const EXAMPLE_RUBRIC_QUESTION_MODEL: QuestionEditFormModel = {
   customNumberOfEntitiesToGiveFeedbackTo: 0,
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
+  customMinNumberOfEntitiesToGiveFeedbackTo: 0,
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+
   showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
   showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
   showRecipientNameTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
@@ -1233,6 +1256,10 @@ export const EXAMPLE_RANK_RECIPIENT_QUESTION_MODEL: QuestionEditFormModel = {
 
   customNumberOfEntitiesToGiveFeedbackTo: 0,
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+  customMinNumberOfEntitiesToGiveFeedbackTo: 0,
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
 
   showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
   showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
@@ -1423,6 +1450,10 @@ export const EXAMPLE_RANK_OPTION_QUESTION_MODEL: QuestionEditFormModel = {
   customNumberOfEntitiesToGiveFeedbackTo: 0,
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
+  customMinNumberOfEntitiesToGiveFeedbackTo: 0,
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+
   showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT,
     FeedbackVisibilityType.GIVER_TEAM_MEMBERS],
   showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
@@ -1460,6 +1491,10 @@ export const EXAMPLE_MCQ_QUESTION_WITHOUT_WEIGHTS_MODEL: QuestionEditFormModel =
 
   customNumberOfEntitiesToGiveFeedbackTo: 0,
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+  customMinNumberOfEntitiesToGiveFeedbackTo: 0,
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
 
   showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT,
     FeedbackVisibilityType.GIVER_TEAM_MEMBERS],
@@ -1499,6 +1534,9 @@ export const EXAMPLE_MCQ_QUESTION_WITH_WEIGHTS_MODEL: QuestionEditFormModel = {
   customNumberOfEntitiesToGiveFeedbackTo: 0,
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
+  customMinNumberOfEntitiesToGiveFeedbackTo: 0,
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
   showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT,
     FeedbackVisibilityType.GIVER_TEAM_MEMBERS],
   showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
@@ -1536,6 +1574,7 @@ export const EXAMPLE_RESPONDER_RUBRIC_SUBMISSION_FORM_MODEL: QuestionSubmissionF
     },
   ],
   customNumberOfEntitiesToGiveFeedbackTo: 0,
+  customMinNumberOfEntitiesToGiveFeedbackTo: 0,
   feedbackQuestionId: '',
   questionNumber: 1,
   questionBrief: '',
@@ -1544,6 +1583,7 @@ export const EXAMPLE_RESPONDER_RUBRIC_SUBMISSION_FORM_MODEL: QuestionSubmissionF
   giverType: FeedbackParticipantType.STUDENTS,
   recipientType: FeedbackParticipantType.OWN_TEAM_MEMBERS,
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
   showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
   showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
   showRecipientNameTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],

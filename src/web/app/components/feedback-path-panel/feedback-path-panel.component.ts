@@ -4,6 +4,7 @@ import {
   FeedbackQuestionType,
   FeedbackTextQuestionDetails,
   NumberOfEntitiesToGiveFeedbackToSetting,
+  MinNumberOfEntitiesToGiveFeedbackToSetting,
 } from '../../../types/api-output';
 import { QuestionEditFormModel } from '../question-edit-form/question-edit-form-model';
 
@@ -22,6 +23,8 @@ export class FeedbackPathPanelComponent {
   FeedbackQuestionType: typeof FeedbackQuestionType = FeedbackQuestionType;
   NumberOfEntitiesToGiveFeedbackToSetting: typeof NumberOfEntitiesToGiveFeedbackToSetting =
       NumberOfEntitiesToGiveFeedbackToSetting;
+  MinNumberOfEntitiesToGiveFeedbackToSetting: typeof MinNumberOfEntitiesToGiveFeedbackToSetting =
+     MinNumberOfEntitiesToGiveFeedbackToSetting;
 
   @Input()
   model: QuestionEditFormModel = {
@@ -44,6 +47,9 @@ export class FeedbackPathPanelComponent {
 
     numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
     customNumberOfEntitiesToGiveFeedbackTo: 1,
+
+    minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+    customMinNumberOfEntitiesToGiveFeedbackTo: 1,
 
     showResponsesTo: [],
     showGiverNameTo: [],
@@ -80,6 +86,13 @@ export class FeedbackPathPanelComponent {
     new EventEmitter<NumberOfEntitiesToGiveFeedbackToSetting>();
 
   @Output()
+  customMinNumberOfEntitiesToGiveFeedbackTo: EventEmitter<number> = new EventEmitter<number>();
+
+  @Output()
+  minNumberOfEntitiesToGiveFeedbackToSetting: EventEmitter<MinNumberOfEntitiesToGiveFeedbackToSetting> =
+    new EventEmitter<MinNumberOfEntitiesToGiveFeedbackToSetting>();
+
+  @Output()
   triggerModelChangeBatch: EventEmitter<Partial<QuestionEditFormModel>> =
     new EventEmitter<Partial<QuestionEditFormModel>>();
 
@@ -91,6 +104,14 @@ export class FeedbackPathPanelComponent {
 
   triggerNumberOfEntitiesSetting(data: NumberOfEntitiesToGiveFeedbackToSetting): void {
     this.numberOfEntitiesToGiveFeedbackToSetting.emit(data);
+  }
+
+  triggerCustomMinNumberOfEntities(data: number): void {
+    this.customMinNumberOfEntitiesToGiveFeedbackTo.emit(data);
+  }
+
+  triggerMinNumberOfEntitiesSetting(data: MinNumberOfEntitiesToGiveFeedbackToSetting): void {
+    this.minNumberOfEntitiesToGiveFeedbackToSetting.emit(data);
   }
 
   triggerCustomFeedbackPath(): void {

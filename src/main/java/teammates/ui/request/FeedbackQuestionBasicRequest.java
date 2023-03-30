@@ -11,6 +11,7 @@ import teammates.common.util.Const;
 import teammates.common.util.JsonUtils;
 import teammates.ui.output.FeedbackVisibilityType;
 import teammates.ui.output.NumberOfEntitiesToGiveFeedbackToSetting;
+import teammates.ui.output.MinNumberOfEntitiesToGiveFeedbackToSetting;
 
 /**
  * The basic request of modifying a feedback question.
@@ -28,6 +29,9 @@ public class FeedbackQuestionBasicRequest extends BasicRequest {
 
     private NumberOfEntitiesToGiveFeedbackToSetting numberOfEntitiesToGiveFeedbackToSetting;
     private Integer customNumberOfEntitiesToGiveFeedbackTo;
+
+    private MinNumberOfEntitiesToGiveFeedbackToSetting minNumberOfEntitiesToGiveFeedbackToSetting;
+    private Integer customMinNumberOfEntitiesToGiveFeedbackTo;
 
     private List<FeedbackVisibilityType> showResponsesTo;
     private List<FeedbackVisibilityType> showGiverNameTo;
@@ -49,6 +53,13 @@ public class FeedbackQuestionBasicRequest extends BasicRequest {
         if (numberOfEntitiesToGiveFeedbackToSetting == NumberOfEntitiesToGiveFeedbackToSetting.CUSTOM) {
             assertTrue(customNumberOfEntitiesToGiveFeedbackTo != null,
                     "customNumberOfEntitiesToGiveFeedbackTo must be set");
+        }
+
+        assertTrue(minNumberOfEntitiesToGiveFeedbackToSetting != null,
+                "minNumberOfEntitiesToGiveFeedbackToSetting cannot be null");
+        if (minNumberOfEntitiesToGiveFeedbackToSetting == MinNumberOfEntitiesToGiveFeedbackToSetting.CUSTOM) {
+            assertTrue(customMinNumberOfEntitiesToGiveFeedbackTo != null,
+                    "customMinNumberOfEntitiesToGiveFeedbackTo must be set");
         }
 
         assertTrue(showResponsesTo != null, "showResponsesTo cannot be null");
@@ -97,6 +108,20 @@ public class FeedbackQuestionBasicRequest extends BasicRequest {
             return Const.MAX_POSSIBLE_RECIPIENTS;
         default:
             assert false : "Unknown numberOfEntitiesToGiveFeedbackToSetting: " + numberOfEntitiesToGiveFeedbackToSetting;
+            break;
+        }
+        return 0;
+    }
+
+    /**
+     * Get minimum number of entities to give feedback to.
+     */
+    public int getMinNumberOfEntitiesToGiveFeedbackTo() {
+        switch (minNumberOfEntitiesToGiveFeedbackToSetting) {
+        case CUSTOM:
+            return customMinNumberOfEntitiesToGiveFeedbackTo;
+        default:
+            assert false : "Unknown minNumberOfEntitiesToGiveFeedbackToSetting: " + minNumberOfEntitiesToGiveFeedbackToSetting;
             break;
         }
         return 0;
@@ -192,6 +217,16 @@ public class FeedbackQuestionBasicRequest extends BasicRequest {
     public void setCustomNumberOfEntitiesToGiveFeedbackTo(Integer customNumberOfEntitiesToGiveFeedbackTo) {
         this.customNumberOfEntitiesToGiveFeedbackTo = customNumberOfEntitiesToGiveFeedbackTo;
     }
+
+    public void setMinNumberOfEntitiesToGiveFeedbackToSetting(
+            MinNumberOfEntitiesToGiveFeedbackToSetting minNumberOfEntitiesToGiveFeedbackToSetting) {
+        this.minNumberOfEntitiesToGiveFeedbackToSetting = minNumberOfEntitiesToGiveFeedbackToSetting;
+    }
+
+    public void setCustomMinNumberOfEntitiesToGiveFeedbackTo(Integer customMinNumberOfEntitiesToGiveFeedbackTo) {
+        this.customMinNumberOfEntitiesToGiveFeedbackTo = customMinNumberOfEntitiesToGiveFeedbackTo;
+    }
+
 
     public void setShowResponsesTo(List<FeedbackVisibilityType> showResponsesTo) {
         this.showResponsesTo = showResponsesTo;

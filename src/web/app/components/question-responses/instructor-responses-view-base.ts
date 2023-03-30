@@ -4,6 +4,7 @@ import {
   FeedbackQuestion,
   FeedbackQuestionType,
   NumberOfEntitiesToGiveFeedbackToSetting,
+  MinNumberOfEntitiesToGiveFeedbackToSetting,
 } from '../../../types/api-output';
 import { CommentTableModel } from '../comment-box/comment-table/comment-table.component';
 
@@ -27,6 +28,8 @@ export abstract class InstructorResponsesViewBase {
     recipientType: FeedbackParticipantType.STUDENTS,
     numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
     customNumberOfEntitiesToGiveFeedbackTo: 0,
+    minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+    customMinNumberOfEntitiesToGiveFeedbackTo: 0,
     showResponsesTo: [],
     showGiverNameTo: [],
     showRecipientNameTo: [],

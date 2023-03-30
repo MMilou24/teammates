@@ -9,6 +9,7 @@ import {
   FeedbackTextQuestionDetails,
   FeedbackVisibilityType,
   NumberOfEntitiesToGiveFeedbackToSetting,
+  MinNumberOfEntitiesToGiveFeedbackToSetting,
 } from '../../../types/api-output';
 import { VisibilityControl } from '../../../types/visibility-control';
 import { SimpleModalType } from '../simple-modal/simple-modal-type';
@@ -21,6 +22,8 @@ const FEEDBACK_PATH_PROPERTIES: Set<string> = new Set<string>([
   'isUsingOtherFeedbackPath',
   'numberOfEntitiesToGiveFeedbackToSetting',
   'customNumberOfEntitiesToGiveFeedbackTo',
+  'minNumberOfEntitiesToGiveFeedbackToSetting',
+  'customMinNumberOfEntitiesToGiveFeedbackTo',
 ]);
 const VISIBILITY_PROPERTIES: Set<string> = new Set<string>([
   'isUsingOtherVisibilitySetting',
@@ -53,6 +56,8 @@ export class QuestionEditFormComponent {
   FeedbackParticipantType: typeof FeedbackParticipantType = FeedbackParticipantType;
   NumberOfEntitiesToGiveFeedbackToSetting: typeof NumberOfEntitiesToGiveFeedbackToSetting =
       NumberOfEntitiesToGiveFeedbackToSetting;
+  MinNumberOfEntitiesToGiveFeedbackToSetting: typeof MinNumberOfEntitiesToGiveFeedbackToSetting =
+      MinNumberOfEntitiesToGiveFeedbackToSetting;
   VisibilityControl: typeof VisibilityControl = VisibilityControl;
   FeedbackVisibilityType: typeof FeedbackVisibilityType = FeedbackVisibilityType;
 
@@ -142,6 +147,9 @@ export class QuestionEditFormComponent {
 
     numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
     customNumberOfEntitiesToGiveFeedbackTo: 1,
+
+    minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+    customMinNumberOfEntitiesToGiveFeedbackTo: 1,
 
     showResponsesTo: [],
     showGiverNameTo: [],

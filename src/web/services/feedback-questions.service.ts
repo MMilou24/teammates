@@ -12,6 +12,7 @@ import {
   FeedbackRankOptionsQuestionDetails, FeedbackRubricQuestionDetails,
   FeedbackVisibilityType,
   NumberOfEntitiesToGiveFeedbackToSetting,
+  MinNumberOfEntitiesToGiveFeedbackToSetting,
 } from '../types/api-output';
 import { FeedbackQuestionCreateRequest, FeedbackQuestionUpdateRequest, Intent } from '../types/api-request';
 import {
@@ -327,6 +328,8 @@ export class FeedbackQuestionsService {
 
           numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
+          minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
           showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
           showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
           showRecipientNameTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
@@ -343,6 +346,8 @@ export class FeedbackQuestionsService {
           recipientType: FeedbackParticipantType.OWN_TEAM_MEMBERS_INCLUDING_SELF,
 
           numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+          minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
           showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT,
             FeedbackVisibilityType.GIVER_TEAM_MEMBERS],
@@ -362,6 +367,8 @@ export class FeedbackQuestionsService {
           recipientType: FeedbackParticipantType.OWN_TEAM_MEMBERS,
 
           numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+          minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
           showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
           showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
@@ -383,6 +390,9 @@ export class FeedbackQuestionsService {
           recipientType: FeedbackParticipantType.OWN_TEAM_MEMBERS,
 
           numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+          
+          minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
 
           showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT,
             FeedbackVisibilityType.GIVER_TEAM_MEMBERS],
@@ -410,6 +420,9 @@ export class FeedbackQuestionsService {
 
           numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
+          minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+
           showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT,
             FeedbackVisibilityType.GIVER_TEAM_MEMBERS],
           showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
@@ -435,6 +448,9 @@ export class FeedbackQuestionsService {
 
           numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
+          minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+
           showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT,
             FeedbackVisibilityType.GIVER_TEAM_MEMBERS],
           showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
@@ -454,6 +470,9 @@ export class FeedbackQuestionsService {
           recipientType: FeedbackParticipantType.OWN_TEAM_MEMBERS,
 
           numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+          minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
 
           showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
           showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
@@ -484,6 +503,9 @@ export class FeedbackQuestionsService {
 
           numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
+          minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+
           showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
           showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
           showRecipientNameTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
@@ -503,6 +525,9 @@ export class FeedbackQuestionsService {
 
           numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
 
+          minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+
           showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
           showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
           showRecipientNameTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
@@ -520,6 +545,9 @@ export class FeedbackQuestionsService {
           recipientType: FeedbackParticipantType.OWN_TEAM_MEMBERS,
 
           numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
+          minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+
 
           showResponsesTo: [FeedbackVisibilityType.INSTRUCTORS, FeedbackVisibilityType.RECIPIENT],
           showGiverNameTo: [FeedbackVisibilityType.INSTRUCTORS],
@@ -654,6 +682,9 @@ export interface NewQuestionModel {
 
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting;
   customNumberOfEntitiesToGiveFeedbackTo?: number;
+
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting;
+  customMinNumberOfEntitiesToGiveFeedbackTo?: number;
 
   showResponsesTo: FeedbackVisibilityType[];
   showGiverNameTo: FeedbackVisibilityType[];

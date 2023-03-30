@@ -146,6 +146,46 @@ export class FeedbackResponsesService {
   }
 
   /**
+   * Checks the number of answers given for a response if applicable.
+   */
+  getNumFeedbackResponse(questionType: FeedbackQuestionType, details: FeedbackResponseDetails): number {
+    switch (questionType) {
+      case FeedbackQuestionType.TEXT: {
+        const textDetails: FeedbackTextResponseDetails = details as FeedbackTextResponseDetails;
+        return textDetails.answer.length;
+      }
+      case FeedbackQuestionType.RANK_OPTIONS: {
+        const rankOptionsDetails: FeedbackRankOptionsResponseDetails = details as FeedbackRankOptionsResponseDetails;
+        const numberOfOptionsRanked: number = rankOptionsDetails.answers
+            .filter((rank: number) => rank !== RANK_OPTIONS_ANSWER_NOT_SUBMITTED && rank != null).length;
+        return numberOfOptionsRanked;
+      }
+      case FeedbackQuestionType.MCQ: {
+        const mcqDetails: FeedbackMcqResponseDetails = details as FeedbackMcqResponseDetails;
+        return mcqDetails.answer.length;
+      }
+      case FeedbackQuestionType.MSQ: {
+        const msqDetails: FeedbackMsqResponseDetails = details as FeedbackMsqResponseDetails;
+        return msqDetails.answers.length;
+      }
+      case FeedbackQuestionType.RUBRIC: {
+        const rubricDetails: FeedbackRubricResponseDetails = details as FeedbackRubricResponseDetails;
+        return rubricDetails.answer.length;
+      }
+      case FeedbackQuestionType.CONSTSUM_OPTIONS: {
+        const constsumDetails: FeedbackConstantSumResponseDetails = details as FeedbackConstantSumResponseDetails;
+        return constsumDetails.answers.length;
+      }
+      case FeedbackQuestionType.CONSTSUM_RECIPIENTS: {
+        const constsumRecipientsDetails: FeedbackConstantSumResponseDetails =
+            details as FeedbackConstantSumResponseDetails;
+        return constsumRecipientsDetails.answers.length;
+      }
+      default: return 0;
+    }
+  }
+
+  /**
    * Determines whether responses should be displayed based on the selected section.
    */
   isFeedbackResponsesDisplayedOnSection(response: ResponseOutput, section: string,

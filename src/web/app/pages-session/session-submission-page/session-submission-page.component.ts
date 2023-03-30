@@ -35,6 +35,7 @@ import {
   FeedbackSessionSubmissionStatus,
   Instructor,
   NumberOfEntitiesToGiveFeedbackToSetting,
+  MinNumberOfEntitiesToGiveFeedbackToSetting,
   RegkeyValidity,
   Student,
 } from '../../../types/api-output';
@@ -496,6 +497,10 @@ export class SessionSubmissionPageComponent implements OnInit, AfterViewInit {
                 customNumberOfEntitiesToGiveFeedbackTo: feedbackQuestion.customNumberOfEntitiesToGiveFeedbackTo
                     ? feedbackQuestion.customNumberOfEntitiesToGiveFeedbackTo : 0,
 
+                minNumberOfEntitiesToGiveFeedbackToSetting: feedbackQuestion.minNumberOfEntitiesToGiveFeedbackToSetting,
+                customMinNumberOfEntitiesToGiveFeedbackTo: feedbackQuestion.customMinNumberOfEntitiesToGiveFeedbackTo
+                    ? feedbackQuestion.customMinNumberOfEntitiesToGiveFeedbackTo : 0,
+
                 showGiverNameTo: feedbackQuestion.showGiverNameTo,
                 showRecipientNameTo: feedbackQuestion.showRecipientNameTo,
                 showResponsesTo: feedbackQuestion.showResponsesTo,
@@ -551,6 +556,11 @@ export class SessionSubmissionPageComponent implements OnInit, AfterViewInit {
               return;
             }
 
+            if (formMode === QuestionSubmissionFormMode.FLEXIBLE_RECIPIENT
+              && model.recipientSubmissionForms.length >= model.customMinNumberOfEntitiesToGiveFeedbackTo) {
+            return;
+          }
+
             let recipientIdentifier: string = '';
             if (formMode !== QuestionSubmissionFormMode.FLEXIBLE_RECIPIENT) {
               recipientIdentifier = recipient.recipientIdentifier;
@@ -586,7 +596,9 @@ export class SessionSubmissionPageComponent implements OnInit, AfterViewInit {
             || model.recipientType === FeedbackParticipantType.TEAMS_IN_SAME_SECTION
             || model.recipientType === FeedbackParticipantType.INSTRUCTORS)
         && model.numberOfEntitiesToGiveFeedbackToSetting === NumberOfEntitiesToGiveFeedbackToSetting.CUSTOM
-        && model.recipientList.length > model.customNumberOfEntitiesToGiveFeedbackTo;
+        && model.recipientList.length > model.customNumberOfEntitiesToGiveFeedbackTo
+        && model.minNumberOfEntitiesToGiveFeedbackToSetting === MinNumberOfEntitiesToGiveFeedbackToSetting.CUSTOM
+        && model.recipientList.length >= model.customMinNumberOfEntitiesToGiveFeedbackTo;
 
     return isNumberOfEntitiesToGiveFeedbackToSettingLimited
         ? QuestionSubmissionFormMode.FLEXIBLE_RECIPIENT : QuestionSubmissionFormMode.FIXED_RECIPIENT;
@@ -632,7 +644,7 @@ export class SessionSubmissionPageComponent implements OnInit, AfterViewInit {
           if (this.getQuestionSubmissionFormMode(model) === QuestionSubmissionFormMode.FLEXIBLE_RECIPIENT) {
             // need to generate limited number of submission forms
             let numberOfRecipientSubmissionFormsNeeded: number =
-                model.customNumberOfEntitiesToGiveFeedbackTo - existingResponses.responses.length;
+                model.customMinNumberOfEntitiesToGiveFeedbackTo
 
             existingResponses.responses.forEach((response: FeedbackResponse) => {
               const submissionForm: FeedbackResponseRecipientSubmissionFormModel = {
@@ -719,6 +731,9 @@ export class SessionSubmissionPageComponent implements OnInit, AfterViewInit {
 
     questionSubmissionForms.forEach((questionSubmissionFormModel: QuestionSubmissionFormModel) => {
       let isQuestionFullyAnswered: boolean = true;
+      // if (answers[questionSubmissionFormModel.feedbackQuestionId].length < questionSubmissionFormModel.customMinNumberOfEntitiesToGiveFeedbackTo) {
+      //   isQuestionFullyAnswered = false;
+      // } 
 
       const responses: FeedbackResponseRequest[] = [];
 
@@ -732,7 +747,17 @@ export class SessionSubmissionPageComponent implements OnInit, AfterViewInit {
             const isFeedbackResponseDetailsEmpty: boolean =
                 this.feedbackResponsesService.isFeedbackResponseDetailsEmpty(
                     questionSubmissionFormModel.questionType, recipientSubmissionFormModel.responseDetails);
-            isQuestionFullyAnswered = isQuestionFullyAnswered && !isFeedbackResponseDetailsEmpty;
+            
+            const getNumFeedbackResponse: number =
+            this.feedbackResponsesService.getNumFeedbackResponse(
+                questionSubmissionFormModel.questionType, recipientSubmissionFormModel.responseDetails);
+
+            //isQuestionFullyAnswered = isQuestionFullyAnswered && !isFeedbackResponseDetailsEmpty;
+            isQuestionFullyAnswered = !isFeedbackResponseDetailsEmpty;
+      
+            if (getNumFeedbackResponse < 4) {
+              isQuestionFullyAnswered = false;
+            }
 
             if (!isFeedbackResponseDetailsEmpty) {
               responses.push({
@@ -789,7 +814,7 @@ export class SessionSubmissionPageComponent implements OnInit, AfterViewInit {
       }
 
       if (!isQuestionFullyAnswered) {
-        notYetAnsweredQuestions.add(questionSubmissionFormModel.questionNumber);
+          notYetAnsweredQuestions.add(questionSubmissionFormModel.questionNumber);
       }
     });
 

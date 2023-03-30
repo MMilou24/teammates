@@ -26,6 +26,7 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
     private FeedbackParticipantType giverType;
     private FeedbackParticipantType recipientType;
     private int numberOfEntitiesToGiveFeedbackTo;
+    private int minNumberOfEntitiesToGiveFeedbackTo;
     private List<FeedbackParticipantType> showResponsesTo;
     private List<FeedbackParticipantType> showGiverNameTo;
     private List<FeedbackParticipantType> showRecipientNameTo;
@@ -60,6 +61,7 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
         faq.giverType = fq.getGiverType();
         faq.recipientType = fq.getRecipientType();
         faq.numberOfEntitiesToGiveFeedbackTo = fq.getNumberOfEntitiesToGiveFeedbackTo();
+        faq.minNumberOfEntitiesToGiveFeedbackTo = fq.getMinNumberOfEntitiesToGiveFeedbackTo();
         if (fq.getShowResponsesTo() != null) {
             faq.showResponsesTo = new ArrayList<>(fq.getShowResponsesTo());
         }
@@ -99,7 +101,8 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
         return new FeedbackQuestion(feedbackSessionName, courseId,
                                     getSerializedQuestionDetails(), questionDescription,
                                     questionNumber, getQuestionType(), giverType,
-                                    recipientType, numberOfEntitiesToGiveFeedbackTo,
+                                    recipientType, numberOfEntitiesToGiveFeedbackTo, 
+                                    minNumberOfEntitiesToGiveFeedbackTo,
                                     showResponsesTo, showGiverNameTo, showRecipientNameTo);
     }
 
@@ -117,6 +120,7 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
         faq.giverType = this.giverType;
         faq.recipientType = this.recipientType;
         faq.numberOfEntitiesToGiveFeedbackTo = this.numberOfEntitiesToGiveFeedbackTo;
+        faq.minNumberOfEntitiesToGiveFeedbackTo = this.minnNumberOfEntitiesToGiveFeedbackTo;
         faq.showResponsesTo = new ArrayList<>(this.showResponsesTo);
         faq.showGiverNameTo = new ArrayList<>(this.showGiverNameTo);
         faq.showRecipientNameTo = new ArrayList<>(this.showRecipientNameTo);
@@ -137,7 +141,10 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
                + ", questionType=" + getQuestionType() + ", giverType=" + giverType
                + ", recipientType=" + recipientType
                + ", numberOfEntitiesToGiveFeedbackTo="
-               + numberOfEntitiesToGiveFeedbackTo + ", showResponsesTo="
+               + numberOfEntitiesToGiveFeedbackTo 
+               + ", minNumberOfEntitiesToGiveFeedbackTo="
+               + minNumberOfEntitiesToGiveFeedbackTo
+               + ", showResponsesTo="
                + showResponsesTo + ", showGiverNameTo=" + showGiverNameTo
                + ", showRecipientNameTo=" + showRecipientNameTo + "]";
     }
@@ -215,6 +222,8 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
 
         result = prime * result + numberOfEntitiesToGiveFeedbackTo;
 
+        result = prime * result + minNumberOfEntitiesToGiveFeedbackTo;
+
         result = prime * result + questionNumber;
 
         result = prime * result + (questionDetails == null ? 0 : questionDetails.hashCode());
@@ -269,6 +278,10 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
         }
 
         if (numberOfEntitiesToGiveFeedbackTo != other.numberOfEntitiesToGiveFeedbackTo) {
+            return false;
+        }
+
+        if (minNumberOfEntitiesToGiveFeedbackTo != other.minNumberOfEntitiesToGiveFeedbackTo) {
             return false;
         }
 
@@ -455,6 +468,14 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
         this.numberOfEntitiesToGiveFeedbackTo = numberOfEntitiesToGiveFeedbackTo;
     }
 
+    public int getMinNumberOfEntitiesToGiveFeedbackTo() {
+        return minNumberOfEntitiesToGiveFeedbackTo;
+    }
+
+    public void setMinNumberOfEntitiesToGiveFeedbackTo(int minNumberOfEntitiesToGiveFeedbackTo) {
+        this.minNumberOfEntitiesToGiveFeedbackTo = minNumberOfEntitiesToGiveFeedbackTo;
+    }
+
     public List<FeedbackParticipantType> getShowResponsesTo() {
         return showResponsesTo;
     }
@@ -494,6 +515,7 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
         updateOptions.giverTypeOption.ifPresent(s -> giverType = s);
         updateOptions.recipientTypeOption.ifPresent(s -> recipientType = s);
         updateOptions.numberOfEntitiesToGiveFeedbackToOption.ifPresent(s -> numberOfEntitiesToGiveFeedbackTo = s);
+        updateOptions.minNumberOfEntitiesToGiveFeedbackToOption.ifPresent(s -> minNumberOfEntitiesToGiveFeedbackTo = s);
         updateOptions.showResponsesToOption.ifPresent(s -> showResponsesTo = s);
         updateOptions.showGiverNameToOption.ifPresent(s -> showGiverNameTo = s);
         updateOptions.showRecipientNameToOption.ifPresent(s -> showRecipientNameTo = s);
@@ -557,6 +579,7 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
         private UpdateOption<FeedbackParticipantType> giverTypeOption = UpdateOption.empty();
         private UpdateOption<FeedbackParticipantType> recipientTypeOption = UpdateOption.empty();
         private UpdateOption<Integer> numberOfEntitiesToGiveFeedbackToOption = UpdateOption.empty();
+        private UpdateOption<Integer> minNumberOfEntitiesToGiveFeedbackToOption = UpdateOption.empty();
         private UpdateOption<List<FeedbackParticipantType>> showResponsesToOption = UpdateOption.empty();
         private UpdateOption<List<FeedbackParticipantType>> showGiverNameToOption = UpdateOption.empty();
         private UpdateOption<List<FeedbackParticipantType>> showRecipientNameToOption = UpdateOption.empty();
@@ -581,6 +604,7 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
                     + ", giverType = " + giverTypeOption
                     + ", recipientType = " + recipientTypeOption
                     + ", numberOfEntitiesToGiveFeedbackTo = " + numberOfEntitiesToGiveFeedbackToOption
+                    + ", minNumberOfEntitiesToGiveFeedbackTo = " + minNumberOfEntitiesToGiveFeedbackToOption
                     + ", showResponsesTo = " + showResponsesToOption
                     + ", showGiverNameTo = " + showGiverNameToOption
                     + ", showRecipientNameTo = " + showRecipientNameToOption
@@ -656,6 +680,11 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
 
         public B withNumberOfEntitiesToGiveFeedbackTo(int numberOfEntitiesToGiveFeedbackTo) {
             updateOptions.numberOfEntitiesToGiveFeedbackToOption = UpdateOption.of(numberOfEntitiesToGiveFeedbackTo);
+            return thisBuilder;
+        }
+
+        public B withMinNumberOfEntitiesToGiveFeedbackTo(int minNumberOfEntitiesToGiveFeedbackTo) {
+            updateOptions.minNumberOfEntitiesToGiveFeedbackToOption = UpdateOption.of(minNumberOfEntitiesToGiveFeedbackTo);
             return thisBuilder;
         }
 

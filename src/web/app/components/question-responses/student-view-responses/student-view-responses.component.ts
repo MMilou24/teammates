@@ -3,6 +3,7 @@ import {
   FeedbackParticipantType,
   FeedbackQuestion,
   FeedbackQuestionType, NumberOfEntitiesToGiveFeedbackToSetting,
+  MinNumberOfEntitiesToGiveFeedbackToSetting,
   ResponseOutput,
 } from '../../../../types/api-output';
 import { CommentRowMode } from '../../comment-box/comment-row/comment-row.mode';
@@ -33,6 +34,8 @@ export class StudentViewResponsesComponent implements OnInit {
     recipientType: FeedbackParticipantType.STUDENTS,
     numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
     customNumberOfEntitiesToGiveFeedbackTo: 0,
+    minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+    customMinNumberOfEntitiesToGiveFeedbackTo: 0,
     showResponsesTo: [],
     showGiverNameTo: [],
     showRecipientNameTo: [],

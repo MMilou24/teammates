@@ -52,6 +52,7 @@ class UpdateFeedbackQuestionAction extends Action {
         oldQuestion.setRecipientType(updateRequest.getRecipientType());
 
         oldQuestion.setNumberOfEntitiesToGiveFeedbackTo(updateRequest.getNumberOfEntitiesToGiveFeedbackTo());
+        oldQuestion.setMinNumberOfEntitiesToGiveFeedbackTo(updateRequest.getMinNumberOfEntitiesToGiveFeedbackTo());
 
         oldQuestion.setShowResponsesTo(updateRequest.getShowResponsesTo());
         oldQuestion.setShowGiverNameTo(updateRequest.getShowGiverNameTo());
@@ -79,6 +80,7 @@ class UpdateFeedbackQuestionAction extends Action {
                             .withGiverType(oldQuestion.getGiverType())
                             .withRecipientType(oldQuestion.getRecipientType())
                             .withNumberOfEntitiesToGiveFeedbackTo(oldQuestion.getNumberOfEntitiesToGiveFeedbackTo())
+                            .withMinNumberOfEntitiesToGiveFeedbackTo(oldQuestion.getMinNumberOfEntitiesToGiveFeedbackTo())
                             .withShowResponsesTo(oldQuestion.getShowResponsesTo())
                             .withShowGiverNameTo(oldQuestion.getShowGiverNameTo())
                             .withShowRecipientNameTo(oldQuestion.getShowRecipientNameTo())

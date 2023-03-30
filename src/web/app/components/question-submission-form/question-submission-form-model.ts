@@ -5,6 +5,7 @@ import {
   FeedbackResponseDetails,
   FeedbackVisibilityType,
   NumberOfEntitiesToGiveFeedbackToSetting,
+  MinNumberOfEntitiesToGiveFeedbackToSetting,
 } from '../../../types/api-output';
 import { CommentRowModel } from '../comment-box/comment-row/comment-row.component';
 
@@ -43,6 +44,9 @@ export interface QuestionSubmissionFormModel {
 
   numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting;
   customNumberOfEntitiesToGiveFeedbackTo: number;
+
+  minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting;
+  customMinNumberOfEntitiesToGiveFeedbackTo: number;
 
   showResponsesTo: FeedbackVisibilityType[];
   showGiverNameTo: FeedbackVisibilityType[];

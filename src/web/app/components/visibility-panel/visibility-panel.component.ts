@@ -8,6 +8,7 @@ import {
   FeedbackTextQuestionDetails,
   FeedbackVisibilityType,
   NumberOfEntitiesToGiveFeedbackToSetting,
+  MinNumberOfEntitiesToGiveFeedbackToSetting,
 } from '../../../types/api-output';
 import { VisibilityControl } from '../../../types/visibility-control';
 import { QuestionEditFormModel } from '../question-edit-form/question-edit-form-model';
@@ -27,6 +28,8 @@ export class VisibilityPanelComponent {
   FeedbackQuestionType: typeof FeedbackQuestionType = FeedbackQuestionType;
   NumberOfEntitiesToGiveFeedbackToSetting: typeof NumberOfEntitiesToGiveFeedbackToSetting =
         NumberOfEntitiesToGiveFeedbackToSetting;
+  MinNumberOfEntitiesToGiveFeedbackToSetting: typeof MinNumberOfEntitiesToGiveFeedbackToSetting =
+        MinNumberOfEntitiesToGiveFeedbackToSetting;
   VisibilityControl: typeof VisibilityControl = VisibilityControl;
   FeedbackVisibilityType: typeof FeedbackVisibilityType = FeedbackVisibilityType;
 
@@ -51,6 +54,9 @@ export class VisibilityPanelComponent {
 
     numberOfEntitiesToGiveFeedbackToSetting: NumberOfEntitiesToGiveFeedbackToSetting.CUSTOM,
     customNumberOfEntitiesToGiveFeedbackTo: 1,
+
+    minNumberOfEntitiesToGiveFeedbackToSetting: MinNumberOfEntitiesToGiveFeedbackToSetting.CUSTOM,
+    customMinNumberOfEntitiesToGiveFeedbackTo: 1,
 
     showResponsesTo: [],
     showGiverNameTo: [],
