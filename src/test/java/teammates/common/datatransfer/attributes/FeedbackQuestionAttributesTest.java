@@ -30,7 +30,8 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         FeedbackQuestionAttributes fqa = getNewFeedbackQuestionAttributes();
         FeedbackQuestion expectedQuestion = new FeedbackQuestion(fqa.getFeedbackSessionName(), fqa.getCourseId(),
                 fqa.getSerializedQuestionDetails(), fqa.getQuestionDescription(), fqa.getQuestionNumber(),
-                fqa.getQuestionType(), fqa.getGiverType(), fqa.getRecipientType(), fqa.getNumberOfEntitiesToGiveFeedbackTo(),
+                fqa.getQuestionType(), fqa.getGiverType(), fqa.getRecipientType(), fqa.getNumberOfEntitiesToGiveFeedbackTo(), 
+                fqa.getMinNumberOfEntitiesToGiveFeedbackTo(),
                 fqa.getShowResponsesTo(), fqa.getShowGiverNameTo(), fqa.getShowRecipientNameTo());
 
         FeedbackQuestion actualQuestion = fqa.toEntity();
@@ -42,6 +43,8 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         assertEquals(expectedQuestion.getQuestionType(), actualQuestion.getQuestionType());
         assertEquals(expectedQuestion.getNumberOfEntitiesToGiveFeedbackTo(),
                 actualQuestion.getNumberOfEntitiesToGiveFeedbackTo());
+        assertEquals(expectedQuestion.getMinNumberOfEntitiesToGiveFeedbackTo(),
+        actualQuestion.getMinNumberOfEntitiesToGiveFeedbackTo());
         assertEquals(expectedQuestion.getQuestionText(), actualQuestion.getQuestionText());
         assertEquals(expectedQuestion.getGiverType(), actualQuestion.getGiverType());
         assertEquals(expectedQuestion.getRecipientType(), actualQuestion.getRecipientType());
@@ -58,6 +61,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         FeedbackQuestion qn = new FeedbackQuestion("session", "course",
                 JsonUtils.toCompactJson(qnDetails), "description", 1, FeedbackQuestionType.TEXT,
                 FeedbackParticipantType.STUDENTS, FeedbackParticipantType.STUDENTS, Const.MAX_POSSIBLE_RECIPIENTS,
+                Const.MAX_POSSIBLE_RECIPIENTS,
                 new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
         qn.setFeedbackQuestionId(1L);
 
@@ -74,6 +78,8 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         assertEquals(qn.getRecipientType(), feedbackQuestionAttributes.getRecipientType());
         assertEquals(qn.getNumberOfEntitiesToGiveFeedbackTo(),
                 feedbackQuestionAttributes.getNumberOfEntitiesToGiveFeedbackTo());
+        assertEquals(qn.getMinNumberOfEntitiesToGiveFeedbackTo(),
+        feedbackQuestionAttributes.getMinNumberOfEntitiesToGiveFeedbackTo());
 
         assertEquals(new ArrayList<>(), feedbackQuestionAttributes.getShowGiverNameTo());
         assertEquals(new ArrayList<>(), feedbackQuestionAttributes.getShowRecipientNameTo());
@@ -89,6 +95,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         FeedbackQuestion qn = new FeedbackQuestion("session", "course",
                 JsonUtils.toCompactJson(qnDetails), "description", 1, FeedbackQuestionType.TEXT,
                 FeedbackParticipantType.STUDENTS, FeedbackParticipantType.STUDENTS, Const.MAX_POSSIBLE_RECIPIENTS,
+                Const.MAX_POSSIBLE_RECIPIENTS,
                 null, null, null);
         qn.setFeedbackQuestionId(1L);
         qn.setCreatedAt(null);
@@ -113,6 +120,8 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         assertEquals(qn.getRecipientType(), feedbackQuestionAttributes.getRecipientType());
         assertEquals(qn.getNumberOfEntitiesToGiveFeedbackTo(),
                 feedbackQuestionAttributes.getNumberOfEntitiesToGiveFeedbackTo());
+        assertEquals(qn.getMinNumberOfEntitiesToGiveFeedbackTo(),
+        feedbackQuestionAttributes.getMinNumberOfEntitiesToGiveFeedbackTo());
 
         assertEquals(new ArrayList<>(), feedbackQuestionAttributes.getShowGiverNameTo());
         assertEquals(new ArrayList<>(), feedbackQuestionAttributes.getShowRecipientNameTo());
@@ -128,6 +137,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         FeedbackQuestion qn = new FeedbackQuestion("session", "course",
                 JsonUtils.toCompactJson(qnDetails), "description", 1, FeedbackQuestionType.TEXT,
                 FeedbackParticipantType.STUDENTS, FeedbackParticipantType.STUDENTS, Const.MAX_POSSIBLE_RECIPIENTS,
+                Const.MAX_POSSIBLE_RECIPIENTS,
                 new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 
         qn.setFeedbackQuestionId(1L);
@@ -182,6 +192,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         FeedbackQuestion qn = new FeedbackQuestion("session", "course",
                 "singleWord", "description", 1, FeedbackQuestionType.TEXT,
                 FeedbackParticipantType.STUDENTS, FeedbackParticipantType.STUDENTS, Const.MAX_POSSIBLE_RECIPIENTS,
+                Const.MAX_POSSIBLE_RECIPIENTS,
                 new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
         qn.setFeedbackQuestionId(1L);
 
@@ -289,6 +300,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         String questionDescription = "some description";
         int questionNumber = 1;
         int numOfEntities = 4;
+        int minNumOfEntities = 4;
         FeedbackQuestionType questionType = FeedbackQuestionType.TEXT;
         FeedbackParticipantType giverType = FeedbackParticipantType.TEAMS;
         FeedbackParticipantType recipientType = FeedbackParticipantType.TEAMS;
@@ -303,6 +315,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
                 .withQuestionDescription(questionDescription)
                 .withQuestionNumber(questionNumber)
                 .withNumberOfEntitiesToGiveFeedbackTo(numOfEntities)
+                .withMinNumberOfEntitiesToGiveFeedbackTo(minNumOfEntities)
                 .withGiverType(giverType)
                 .withRecipientType(recipientType)
                 .withShowGiverNameTo(new ArrayList<>(participants))
@@ -317,6 +330,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         assertEquals(questionDescription, feedbackQuestionAttributes.getQuestionDescription());
         assertEquals(questionNumber, feedbackQuestionAttributes.getQuestionNumber());
         assertEquals(numOfEntities, feedbackQuestionAttributes.getNumberOfEntitiesToGiveFeedbackTo());
+        assertEquals(minNumOfEntities, feedbackQuestionAttributes.getMinNumberOfEntitiesToGiveFeedbackTo());
         assertEquals(questionType, feedbackQuestionAttributes.getQuestionType());
         assertEquals(giverType, feedbackQuestionAttributes.getGiverType());
         assertEquals(recipientType, feedbackQuestionAttributes.getRecipientType());
@@ -344,6 +358,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         assertNull(observedFeedbackQuestionAttributes.getQuestionDescription());
         assertNull(observedFeedbackQuestionAttributes.getQuestionDetails());
         assertEquals(0, observedFeedbackQuestionAttributes.getNumberOfEntitiesToGiveFeedbackTo());
+        assertEquals(0, observedFeedbackQuestionAttributes.getMinNumberOfEntitiesToGiveFeedbackTo());
         assertNull(observedFeedbackQuestionAttributes.getCreatedAt());
         assertNull(observedFeedbackQuestionAttributes.getUpdatedAt());
     }
@@ -513,6 +528,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
                 .withShowRecipientNameTo(new ArrayList<>(participants))
                 .withShowResponsesTo(new ArrayList<>(participantsForShowResponseTo))
                 .withNumberOfEntitiesToGiveFeedbackTo(Const.MAX_POSSIBLE_RECIPIENTS)
+                .withMinNumberOfEntitiesToGiveFeedbackTo(Const.MAX_POSSIBLE_RECIPIENTS)
                 .build();
 
         assertTrue(question.getShowGiverNameTo().isEmpty());
@@ -671,6 +687,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
                         .withGiverType(FeedbackParticipantType.STUDENTS)
                         .withRecipientType(FeedbackParticipantType.INSTRUCTORS)
                         .withNumberOfEntitiesToGiveFeedbackTo(2)
+                        .withMinNumberOfEntitiesToGiveFeedbackTo(2)
                         .withShowResponsesTo(Lists.newArrayList(
                                 FeedbackParticipantType.INSTRUCTORS, FeedbackParticipantType.RECEIVER_TEAM_MEMBERS))
                         .withShowGiverNameTo(Lists.newArrayList(FeedbackParticipantType.INSTRUCTORS))
@@ -686,6 +703,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
                         .withGiverType(FeedbackParticipantType.INSTRUCTORS)
                         .withRecipientType(FeedbackParticipantType.SELF)
                         .withNumberOfEntitiesToGiveFeedbackTo(3)
+                        .withMinNumberOfEntitiesToGiveFeedbackTo(3)
                         .withQuestionNumber(1)
                         .withQuestionDetails(new FeedbackTextQuestionDetails("question text 2"))
                         .withShowGiverNameTo(new ArrayList<>())
@@ -704,6 +722,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         assertEquals(FeedbackParticipantType.STUDENTS, questionAttributes.getGiverType());
         assertEquals(FeedbackParticipantType.INSTRUCTORS, questionAttributes.getRecipientType());
         assertEquals(2, questionAttributes.getNumberOfEntitiesToGiveFeedbackTo());
+        assertEquals(2, questionAttributes.getMinNumberOfEntitiesToGiveFeedbackTo());
         // RECEIVER_TEAM_MEMBERS is removed as it is irrelevant visibility
         assertEquals(Lists.newArrayList(FeedbackParticipantType.INSTRUCTORS), questionAttributes.getShowResponsesTo());
         assertEquals(Lists.newArrayList(FeedbackParticipantType.INSTRUCTORS), questionAttributes.getShowGiverNameTo());
@@ -724,6 +743,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
                         .withGiverType(FeedbackParticipantType.INSTRUCTORS)
                         .withRecipientType(FeedbackParticipantType.SELF)
                         .withNumberOfEntitiesToGiveFeedbackTo(3)
+                        .withMinNumberOfEntitiesToGiveFeedbackTo(3)
                         .withQuestionNumber(1)
                         .withQuestionDetails(new FeedbackTextQuestionDetails("question text"))
                         .withShowGiverNameTo(new ArrayList<>())
@@ -742,6 +762,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
         assertEquals(FeedbackParticipantType.INSTRUCTORS, questionAttributes.getGiverType());
         assertEquals(FeedbackParticipantType.SELF, questionAttributes.getRecipientType());
         assertEquals(3, questionAttributes.getNumberOfEntitiesToGiveFeedbackTo());
+        assertEquals(3, questionAttributes.getMinNumberOfEntitiesToGiveFeedbackTo());
         assertEquals(Lists.newArrayList(), questionAttributes.getShowResponsesTo());
         assertEquals(Lists.newArrayList(), questionAttributes.getShowGiverNameTo());
         assertEquals(Lists.newArrayList(), questionAttributes.getShowRecipientNameTo());
@@ -856,6 +877,7 @@ public class FeedbackQuestionAttributesTest extends BaseAttributesTest {
                 .withGiverType(FeedbackParticipantType.INSTRUCTORS)
                 .withRecipientType(FeedbackParticipantType.SELF)
                 .withNumberOfEntitiesToGiveFeedbackTo(1)
+                .withMinNumberOfEntitiesToGiveFeedbackTo(1)
                 .withQuestionNumber(1)
                 .withQuestionDetails(questionDetails)
                 .withShowGiverNameTo(new ArrayList<>(participants))

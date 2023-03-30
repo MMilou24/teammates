@@ -731,9 +731,6 @@ export class SessionSubmissionPageComponent implements OnInit, AfterViewInit {
 
     questionSubmissionForms.forEach((questionSubmissionFormModel: QuestionSubmissionFormModel) => {
       let isQuestionFullyAnswered: boolean = true;
-      // if (answers[questionSubmissionFormModel.feedbackQuestionId].length < questionSubmissionFormModel.customMinNumberOfEntitiesToGiveFeedbackTo) {
-      //   isQuestionFullyAnswered = false;
-      // } 
 
       const responses: FeedbackResponseRequest[] = [];
 
@@ -755,7 +752,7 @@ export class SessionSubmissionPageComponent implements OnInit, AfterViewInit {
             //isQuestionFullyAnswered = isQuestionFullyAnswered && !isFeedbackResponseDetailsEmpty;
             isQuestionFullyAnswered = !isFeedbackResponseDetailsEmpty;
       
-            if (getNumFeedbackResponse < 4) {
+            if (getNumFeedbackResponse < ) {
               isQuestionFullyAnswered = false;
             }
 

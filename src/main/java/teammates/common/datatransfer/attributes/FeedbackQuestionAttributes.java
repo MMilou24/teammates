@@ -120,7 +120,7 @@ public final class FeedbackQuestionAttributes extends EntityAttributes<FeedbackQ
         faq.giverType = this.giverType;
         faq.recipientType = this.recipientType;
         faq.numberOfEntitiesToGiveFeedbackTo = this.numberOfEntitiesToGiveFeedbackTo;
-        faq.minNumberOfEntitiesToGiveFeedbackTo = this.minnNumberOfEntitiesToGiveFeedbackTo;
+        faq.minNumberOfEntitiesToGiveFeedbackTo = this.minNumberOfEntitiesToGiveFeedbackTo;
         faq.showResponsesTo = new ArrayList<>(this.showResponsesTo);
         faq.showGiverNameTo = new ArrayList<>(this.showGiverNameTo);
         faq.showRecipientNameTo = new ArrayList<>(this.showRecipientNameTo);

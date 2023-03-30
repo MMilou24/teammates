@@ -363,6 +363,9 @@ export class InstructorSessionsPageComponent extends InstructorSessionModalPageC
                     numberOfEntitiesToGiveFeedbackToSetting: question.numberOfEntitiesToGiveFeedbackToSetting,
                     customNumberOfEntitiesToGiveFeedbackTo: question.customNumberOfEntitiesToGiveFeedbackTo,
 
+                    minNumberOfEntitiesToGiveFeedbackToSetting: question.minNumberOfEntitiesToGiveFeedbackToSetting,
+                    customMinNumberOfEntitiesToGiveFeedbackTo: question.customMinNumberOfEntitiesToGiveFeedbackTo,
+
                     showResponsesTo: question.showResponsesTo,
                     showGiverNameTo: question.showGiverNameTo,
                     showRecipientNameTo: question.showRecipientNameTo,
