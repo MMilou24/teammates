@@ -16,6 +16,7 @@ import teammates.common.util.Const;
 import teammates.ui.output.FeedbackQuestionData;
 import teammates.ui.output.FeedbackVisibilityType;
 import teammates.ui.output.NumberOfEntitiesToGiveFeedbackToSetting;
+import teammates.ui.output.MinNumberOfEntitiesToGiveFeedbackToSetting;
 import teammates.ui.request.FeedbackQuestionCreateRequest;
 
 /**
@@ -97,6 +98,8 @@ public class CreateFeedbackQuestionActionTest extends BaseActionTest<CreateFeedb
         createRequest = getTypicalTextQuestionCreateRequest();
         createRequest.setNumberOfEntitiesToGiveFeedbackToSetting(NumberOfEntitiesToGiveFeedbackToSetting.CUSTOM);
         createRequest.setCustomNumberOfEntitiesToGiveFeedbackTo(100);
+        createRequest.setMinNumberOfEntitiesToGiveFeedbackToSetting(MinNumberOfEntitiesToGiveFeedbackToSetting.CUSTOM);
+        createRequest.setCustomMinNumberOfEntitiesToGiveFeedbackTo(100);
         createRequest.setGiverType(FeedbackParticipantType.STUDENTS);
         createRequest.setRecipientType(FeedbackParticipantType.STUDENTS);
         a = getAction(createRequest, params);
@@ -111,6 +114,14 @@ public class CreateFeedbackQuestionActionTest extends BaseActionTest<CreateFeedb
                         session.getCourseId(), createRequest.getQuestionNumber());
         // verify question is created
         assertEquals(100, questionAttributes.getNumberOfEntitiesToGiveFeedbackTo());
+
+        assertEquals(100, questionResponse.getCustomMinNumberOfEntitiesToGiveFeedbackTo().intValue());
+        assertNotNull(questionResponse.getFeedbackQuestionId());
+        questionAttributes =
+                logic.getFeedbackQuestion(session.getFeedbackSessionName(),
+                        session.getCourseId(), createRequest.getQuestionNumber());
+        // verify question is created
+        assertEquals(100, questionAttributes.getMinNumberOfEntitiesToGiveFeedbackTo());
 
     }
 
@@ -190,6 +201,7 @@ public class CreateFeedbackQuestionActionTest extends BaseActionTest<CreateFeedb
         createRequest.setGiverType(FeedbackParticipantType.STUDENTS);
         createRequest.setRecipientType(FeedbackParticipantType.INSTRUCTORS);
         createRequest.setNumberOfEntitiesToGiveFeedbackToSetting(NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED);
+        createRequest.setMinNumberOfEntitiesToGiveFeedbackToSetting(MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED);
 
         createRequest.setShowResponsesTo(new ArrayList<>());
         createRequest.setShowGiverNameTo(new ArrayList<>());
@@ -209,6 +221,7 @@ public class CreateFeedbackQuestionActionTest extends BaseActionTest<CreateFeedb
         createRequest.setGiverType(FeedbackParticipantType.STUDENTS);
         createRequest.setRecipientType(FeedbackParticipantType.OWN_TEAM_MEMBERS_INCLUDING_SELF);
         createRequest.setNumberOfEntitiesToGiveFeedbackToSetting(NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED);
+        createRequest.setMinNumberOfEntitiesToGiveFeedbackToSetting(MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED);
 
         createRequest.setShowResponsesTo(Arrays.asList(FeedbackVisibilityType.INSTRUCTORS));
         createRequest.setShowGiverNameTo(Arrays.asList(FeedbackVisibilityType.INSTRUCTORS));

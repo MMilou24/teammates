@@ -18,6 +18,7 @@ import teammates.ui.output.FeedbackQuestionData;
 import teammates.ui.output.FeedbackQuestionsData;
 import teammates.ui.output.FeedbackVisibilityType;
 import teammates.ui.output.NumberOfEntitiesToGiveFeedbackToSetting;
+import teammates.ui.output.MinNumberOfEntitiesToGiveFeedbackToSetting;
 import teammates.ui.request.Intent;
 
 /**
@@ -89,6 +90,10 @@ public class GetFeedbackQuestionsActionTest extends BaseActionTest<GetFeedbackQu
                 typicalResponse.getNumberOfEntitiesToGiveFeedbackToSetting());
         assertEquals(1, typicalResponse.getCustomNumberOfEntitiesToGiveFeedbackTo().intValue());
 
+        assertEquals(MinNumberOfEntitiesToGiveFeedbackToSetting.CUSTOM,
+                typicalResponse.getMinNumberOfEntitiesToGiveFeedbackToSetting());
+        assertEquals(1, typicalResponse.getCustomMinNumberOfEntitiesToGiveFeedbackTo().intValue());
+
         assertEquals(Arrays.asList(FeedbackVisibilityType.INSTRUCTORS),
                 typicalResponse.getShowResponsesTo());
         assertEquals(Arrays.asList(FeedbackVisibilityType.INSTRUCTORS),
@@ -111,6 +116,7 @@ public class GetFeedbackQuestionsActionTest extends BaseActionTest<GetFeedbackQu
                 .withCourseId(fsa.getCourseId())
                 .withFeedbackSessionName(fsa.getFeedbackSessionName())
                 .withNumberOfEntitiesToGiveFeedbackTo(2)
+                .withMinNumberOfEntitiesToGiveFeedbackTo(2)
                 .withQuestionDescription("test")
                 .withQuestionNumber(1)
                 .withGiverType(FeedbackParticipantType.STUDENTS)
@@ -150,6 +156,7 @@ public class GetFeedbackQuestionsActionTest extends BaseActionTest<GetFeedbackQu
                 .withCourseId(fsa.getCourseId())
                 .withFeedbackSessionName(fsa.getFeedbackSessionName())
                 .withNumberOfEntitiesToGiveFeedbackTo(2)
+                .withMinNumberOfEntitiesToGiveFeedbackTo(2)
                 .withQuestionDescription("test")
                 .withQuestionNumber(1)
                 .withGiverType(FeedbackParticipantType.INSTRUCTORS)

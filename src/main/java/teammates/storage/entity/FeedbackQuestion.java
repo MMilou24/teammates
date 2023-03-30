@@ -52,6 +52,7 @@ public class FeedbackQuestion extends BaseEntity {
     // Check for consistency in questionLogic/questionAttributes.
     // (i.e. if type is own team, numberOfEntities must = 1).
     private int numberOfEntitiesToGiveFeedbackTo;
+    private int minNumberOfEntitiesToGiveFeedbackTo;
 
     private List<FeedbackParticipantType> showResponsesTo = new ArrayList<>();
 
@@ -75,7 +76,8 @@ public class FeedbackQuestion extends BaseEntity {
             String questionText, String questionDescription, int questionNumber, FeedbackQuestionType questionType,
             FeedbackParticipantType giverType,
             FeedbackParticipantType recipientType,
-            int numberOfEntitiesToGiveFeedbackTo,
+            int numberOfEntitiesToGiveFeedbackTo,            
+            int minNumberOfEntitiesToGiveFeedbackTo,
             List<FeedbackParticipantType> showResponsesTo,
             List<FeedbackParticipantType> showGiverNameTo,
             List<FeedbackParticipantType> showRecipientNameTo) {
@@ -90,6 +92,7 @@ public class FeedbackQuestion extends BaseEntity {
         this.giverType = giverType;
         this.recipientType = recipientType;
         this.numberOfEntitiesToGiveFeedbackTo = numberOfEntitiesToGiveFeedbackTo;
+        this.minNumberOfEntitiesToGiveFeedbackTo = minNumberOfEntitiesToGiveFeedbackTo;
         this.showResponsesTo = showResponsesTo == null ? new ArrayList<>() : showResponsesTo;
         this.showGiverNameTo = showGiverNameTo == null ? new ArrayList<>() : showGiverNameTo;
         this.showRecipientNameTo =
@@ -208,6 +211,15 @@ public class FeedbackQuestion extends BaseEntity {
     public void setNumberOfEntitiesToGiveFeedbackTo(
             int numberOfEntitiesToGiveFeedbackTo) {
         this.numberOfEntitiesToGiveFeedbackTo = numberOfEntitiesToGiveFeedbackTo;
+    }
+
+    public int getMinNumberOfEntitiesToGiveFeedbackTo() {
+        return minNumberOfEntitiesToGiveFeedbackTo;
+    }
+
+    public void setMinNumberOfEntitiesToGiveFeedbackTo(
+            int minNumberOfEntitiesToGiveFeedbackTo) {
+        this.minNumberOfEntitiesToGiveFeedbackTo = minNumberOfEntitiesToGiveFeedbackTo;
     }
 
     public List<FeedbackParticipantType> getShowResponsesTo() {

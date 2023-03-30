@@ -32,6 +32,9 @@ public class FeedbackQuestionData extends ApiOutput {
     private final NumberOfEntitiesToGiveFeedbackToSetting numberOfEntitiesToGiveFeedbackToSetting;
     private final Integer customNumberOfEntitiesToGiveFeedbackTo;
 
+    private final MinNumberOfEntitiesToGiveFeedbackToSetting minNumberOfEntitiesToGiveFeedbackToSetting;
+    private final Integer customMinNumberOfEntitiesToGiveFeedbackTo;
+
     private List<FeedbackVisibilityType> showResponsesTo;
     private List<FeedbackVisibilityType> showGiverNameTo;
     private List<FeedbackVisibilityType> showRecipientNameTo;
@@ -57,6 +60,14 @@ public class FeedbackQuestionData extends ApiOutput {
             this.numberOfEntitiesToGiveFeedbackToSetting = NumberOfEntitiesToGiveFeedbackToSetting.CUSTOM;
             this.customNumberOfEntitiesToGiveFeedbackTo =
                     feedbackQuestionAttributes.getNumberOfEntitiesToGiveFeedbackTo();
+        }
+        if (feedbackQuestionAttributes.getMinNumberOfEntitiesToGiveFeedbackTo() == Const.MAX_POSSIBLE_RECIPIENTS) {
+            this.minNumberOfEntitiesToGiveFeedbackToSetting = MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED;
+            this.customMinNumberOfEntitiesToGiveFeedbackTo = null;
+        } else {
+            this.minNumberOfEntitiesToGiveFeedbackToSetting = MinNumberOfEntitiesToGiveFeedbackToSetting.CUSTOM;
+            this.customMinNumberOfEntitiesToGiveFeedbackTo =
+                    feedbackQuestionAttributes.getMinNumberOfEntitiesToGiveFeedbackTo();
         }
 
         // the visibility types are mixed in feedback participant type
@@ -153,6 +164,14 @@ public class FeedbackQuestionData extends ApiOutput {
 
     public Integer getCustomNumberOfEntitiesToGiveFeedbackTo() {
         return customNumberOfEntitiesToGiveFeedbackTo;
+    }
+
+    public MinNumberOfEntitiesToGiveFeedbackToSetting getMinNumberOfEntitiesToGiveFeedbackToSetting() {
+        return minNumberOfEntitiesToGiveFeedbackToSetting;
+    }
+
+    public Integer getCustomMinNumberOfEntitiesToGiveFeedbackTo() {
+        return customMinNumberOfEntitiesToGiveFeedbackTo;
     }
 
     public List<FeedbackVisibilityType> getShowResponsesTo() {

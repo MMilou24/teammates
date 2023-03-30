@@ -30,6 +30,7 @@ public class JsonUtilsTest extends BaseTestCase {
                 .withGiverType(FeedbackParticipantType.INSTRUCTORS)
                 .withRecipientType(FeedbackParticipantType.SELF)
                 .withNumberOfEntitiesToGiveFeedbackTo(Const.MAX_POSSIBLE_RECIPIENTS)
+                .withMinNumberOfEntitiesToGiveFeedbackTo(Const.MAX_POSSIBLE_RECIPIENTS)
                 .withQuestionNumber(1)
                 .withQuestionDetails(questionDetails)
                 .withShowGiverNameTo(participants)
@@ -49,6 +50,7 @@ public class JsonUtilsTest extends BaseTestCase {
                 + "  \"giverType\": \"INSTRUCTORS\",\n"
                 + "  \"recipientType\": \"SELF\",\n"
                 + "  \"numberOfEntitiesToGiveFeedbackTo\": -100,\n"
+                + "  \"minNumberOfEntitiesToGiveFeedbackTo\": -100,\n"
                 + "  \"showResponsesTo\": [\n"
                 + "    \"RECEIVER\"\n"
                 + "  ],\n"
@@ -65,6 +67,7 @@ public class JsonUtilsTest extends BaseTestCase {
                 + "\"TEXT\","
                 + "\"questionText\":\"Question text.\"},\"questionNumber\":1,"
                 + "\"giverType\":\"INSTRUCTORS\",\"recipientType\":\"SELF\",\"numberOfEntitiesToGiveFeedbackTo\":-100,"
+                + "\"giverType\":\"INSTRUCTORS\",\"recipientType\":\"SELF\",\"minNumberOfEntitiesToGiveFeedbackTo\":-100,"
                 + "\"showResponsesTo\":[\"RECEIVER\"],\"showGiverNameTo\":[\"RECEIVER\"],"
                 + "\"showRecipientNameTo\":[\"RECEIVER\"]}",
                 JsonUtils.toCompactJson(fqa));

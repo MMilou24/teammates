@@ -64,6 +64,7 @@ import teammates.ui.output.InstructorsData;
 import teammates.ui.output.MessageOutput;
 import teammates.ui.output.NotificationData;
 import teammates.ui.output.NumberOfEntitiesToGiveFeedbackToSetting;
+import teammates.ui.output.MinNumberOfEntitiesToGiveFeedbackToSetting;
 import teammates.ui.output.ResponseVisibleSetting;
 import teammates.ui.output.SessionVisibleSetting;
 import teammates.ui.output.StudentData;
@@ -651,6 +652,10 @@ public abstract class AbstractBackDoor {
                         .equals(NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED)
                         ? Const.MAX_POSSIBLE_RECIPIENTS
                         : question.getCustomNumberOfEntitiesToGiveFeedbackTo())
+                .withMinNumberOfEntitiesToGiveFeedbackTo(question.getMinNumberOfEntitiesToGiveFeedbackToSetting()
+                .equals(MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED)
+                ? Const.MAX_POSSIBLE_RECIPIENTS
+                : question.getCustomMinNumberOfEntitiesToGiveFeedbackTo())
                 .withShowResponsesTo(convertToFeedbackParticipantType(question.getShowResponsesTo()))
                 .withShowGiverNameTo(convertToFeedbackParticipantType(question.getShowGiverNameTo()))
                 .withShowRecipientNameTo(convertToFeedbackParticipantType(question.getShowRecipientNameTo()))

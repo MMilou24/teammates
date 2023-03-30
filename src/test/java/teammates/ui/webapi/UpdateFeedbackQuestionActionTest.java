@@ -18,6 +18,7 @@ import teammates.common.util.JsonUtils;
 import teammates.ui.output.FeedbackQuestionData;
 import teammates.ui.output.FeedbackVisibilityType;
 import teammates.ui.output.NumberOfEntitiesToGiveFeedbackToSetting;
+import teammates.ui.output.MinNumberOfEntitiesToGiveFeedbackToSetting;
 import teammates.ui.request.FeedbackQuestionUpdateRequest;
 
 /**
@@ -90,7 +91,13 @@ public class UpdateFeedbackQuestionActionTest extends BaseActionTest<UpdateFeedb
                 response.getNumberOfEntitiesToGiveFeedbackToSetting());
         assertEquals(Const.MAX_POSSIBLE_RECIPIENTS, typicalQuestion.getNumberOfEntitiesToGiveFeedbackTo());
 
+        assertEquals(MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED,
+                response.getMinNumberOfEntitiesToGiveFeedbackToSetting());
+        assertEquals(Const.MAX_POSSIBLE_RECIPIENTS, typicalQuestion.getMinNumberOfEntitiesToGiveFeedbackTo());
+
+
         assertNull(response.getCustomNumberOfEntitiesToGiveFeedbackTo());
+        assertNull(response.getCustomMinNumberOfEntitiesToGiveFeedbackTo());
 
         assertTrue(response.getShowResponsesTo().isEmpty());
         assertTrue(typicalQuestion.getShowResponsesTo().isEmpty());
@@ -115,6 +122,9 @@ public class UpdateFeedbackQuestionActionTest extends BaseActionTest<UpdateFeedb
         FeedbackQuestionUpdateRequest updateRequest = getTypicalTextQuestionUpdateRequest();
         updateRequest.setNumberOfEntitiesToGiveFeedbackToSetting(NumberOfEntitiesToGiveFeedbackToSetting.CUSTOM);
         updateRequest.setCustomNumberOfEntitiesToGiveFeedbackTo(10);
+        updateRequest.setMinNumberOfEntitiesToGiveFeedbackToSetting(MinNumberOfEntitiesToGiveFeedbackToSetting.CUSTOM);
+        updateRequest.setCustomMinNumberOfEntitiesToGiveFeedbackTo(10);
+
 
         UpdateFeedbackQuestionAction a = getAction(updateRequest, param);
         getJsonResult(a);
@@ -122,6 +132,7 @@ public class UpdateFeedbackQuestionActionTest extends BaseActionTest<UpdateFeedb
         typicalQuestion = logic.getFeedbackQuestion(typicalQuestion.getId());
 
         assertEquals(10, typicalQuestion.getNumberOfEntitiesToGiveFeedbackTo());
+        assertEquals(10, typicalQuestion.getMinNumberOfEntitiesToGiveFeedbackTo());
     }
 
     @Test
@@ -334,6 +345,9 @@ public class UpdateFeedbackQuestionActionTest extends BaseActionTest<UpdateFeedb
         updateRequest.setRecipientType(FeedbackParticipantType.STUDENTS);
         updateRequest.setNumberOfEntitiesToGiveFeedbackToSetting(NumberOfEntitiesToGiveFeedbackToSetting.CUSTOM);
         updateRequest.setCustomNumberOfEntitiesToGiveFeedbackTo(1);
+        updateRequest.setMinNumberOfEntitiesToGiveFeedbackToSetting(MinNumberOfEntitiesToGiveFeedbackToSetting.CUSTOM);
+        updateRequest.setCustomMinNumberOfEntitiesToGiveFeedbackTo(1);
+
 
         String[] param = new String[] {
                 Const.ParamsNames.FEEDBACK_QUESTION_ID, fq.getFeedbackQuestionId(),
@@ -408,6 +422,8 @@ public class UpdateFeedbackQuestionActionTest extends BaseActionTest<UpdateFeedb
         updateRequest.setGiverType(FeedbackParticipantType.STUDENTS);
         updateRequest.setRecipientType(FeedbackParticipantType.INSTRUCTORS);
         updateRequest.setNumberOfEntitiesToGiveFeedbackToSetting(NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED);
+        updateRequest.setMinNumberOfEntitiesToGiveFeedbackToSetting(MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED);
+
 
         updateRequest.setShowResponsesTo(new ArrayList<>());
         updateRequest.setShowGiverNameTo(new ArrayList<>());
@@ -429,6 +445,8 @@ public class UpdateFeedbackQuestionActionTest extends BaseActionTest<UpdateFeedb
         updateRequest.setGiverType(FeedbackParticipantType.STUDENTS);
         updateRequest.setRecipientType(FeedbackParticipantType.OWN_TEAM_MEMBERS_INCLUDING_SELF);
         updateRequest.setNumberOfEntitiesToGiveFeedbackToSetting(NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED);
+        updateRequest.setMinNumberOfEntitiesToGiveFeedbackToSetting(MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED);
+
 
         updateRequest.setShowResponsesTo(Arrays.asList(FeedbackVisibilityType.INSTRUCTORS));
         updateRequest.setShowGiverNameTo(Arrays.asList(FeedbackVisibilityType.INSTRUCTORS));

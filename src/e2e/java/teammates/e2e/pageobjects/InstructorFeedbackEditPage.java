@@ -328,6 +328,7 @@ public class InstructorFeedbackEditPage extends AppPage {
                 || feedbackReceiver.equals(getDisplayRecipientName(FeedbackParticipantType.STUDENTS_EXCLUDING_SELF))
                 || feedbackReceiver.equals(getDisplayRecipientName(FeedbackParticipantType.TEAMS_EXCLUDING_SELF))) {
             verifyNumberOfEntitiesToGiveFeedbackTo(questionNum, feedbackQuestion.getNumberOfEntitiesToGiveFeedbackTo());
+            verifyMinNumberOfEntitiesToGiveFeedbackTo(questionNum, feedbackQuestion.getMinNumberOfEntitiesToGiveFeedbackTo());
         }
     }
 
@@ -340,6 +341,18 @@ public class InstructorFeedbackEditPage extends AppPage {
             assertTrue(feedbackPathPanel.findElement(By.id("custom-recipients")).isSelected());
             assertEquals(feedbackPathPanel.findElement(By.id("custom-recipients-number")).getAttribute("value"),
                     Integer.toString(numberOfEntitiesToGiveFeedbackTo));
+        }
+    }
+
+    private void verifyMinNumberOfEntitiesToGiveFeedbackTo(int questionNum, int minNumberOfEntitiesToGiveFeedbackTo) {
+        WebElement questionForm = getQuestionForm(questionNum);
+        WebElement feedbackPathPanel = questionForm.findElement(By.tagName("tm-feedback-path-panel"));
+        if (minNumberOfEntitiesToGiveFeedbackTo == Const.MAX_POSSIBLE_RECIPIENTS) {
+            assertTrue(feedbackPathPanel.findElement(By.id("unlimited-recipients")).isSelected());
+        } else {
+            assertTrue(feedbackPathPanel.findElement(By.id("custom-recipients")).isSelected());
+            assertEquals(feedbackPathPanel.findElement(By.id("custom-recipients-number")).getAttribute("value"),
+                    Integer.toString(minNumberOfEntitiesToGiveFeedbackTo));
         }
     }
 
@@ -1055,7 +1068,7 @@ public class InstructorFeedbackEditPage extends AppPage {
         if (!CUSTOM_FEEDBACK_PATH_OPTION.equals(feedbackPath)) {
             selectFeedbackPathDropdownOption(questionNum, CUSTOM_FEEDBACK_PATH_OPTION + "...");
         }
-        // Set to type STUDENT first to adjust NumberOfEntitiesToGiveFeedbackTo
+        // Set to type STUDENT first to adjust NumberOfEntitiesToGiveFeedbackTo and MinNumberOfEntitiesToGiveFeedbackTo
         selectDropdownOptionByText(questionForm.findElement(By.id("giver-type")),
                 getDisplayGiverName(FeedbackParticipantType.STUDENTS));
         selectDropdownOptionByText(questionForm.findElement(By.id("receiver-type")),
@@ -1066,6 +1079,13 @@ public class InstructorFeedbackEditPage extends AppPage {
             click(questionForm.findElement(By.id("custom-recipients")));
             fillTextBox(questionForm.findElement(By.id("custom-recipients-number")),
                     Integer.toString(feedbackQuestion.getNumberOfEntitiesToGiveFeedbackTo()));
+        }
+        if (feedbackQuestion.getMinNumberOfEntitiesToGiveFeedbackTo() == Const.MAX_POSSIBLE_RECIPIENTS) {
+            click(questionForm.findElement(By.id("unlimited-recipients")));
+        } else {
+            click(questionForm.findElement(By.id("custom-recipients")));
+            fillTextBox(questionForm.findElement(By.id("custom-recipients-number")),
+                    Integer.toString(feedbackQuestion.getMinNumberOfEntitiesToGiveFeedbackTo()));
         }
 
         selectDropdownOptionByText(questionForm.findElement(By.id("giver-type")), getDisplayGiverName(newGiver));

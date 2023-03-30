@@ -35,6 +35,7 @@ import teammates.lnp.util.JMeterElements;
 import teammates.lnp.util.LNPSpecification;
 import teammates.lnp.util.LNPTestData;
 import teammates.ui.output.NumberOfEntitiesToGiveFeedbackToSetting;
+import teammates.ui.output.MinNumberOfEntitiesToGiveFeedbackToSetting;
 import teammates.ui.request.FeedbackQuestionUpdateRequest;
 
 /**
@@ -266,6 +267,7 @@ public class FeedbackQuestionUpdateLNPTest extends BaseLNPTestCase {
         updateRequest.setGiverType(FeedbackParticipantType.STUDENTS);
         updateRequest.setRecipientType(FeedbackParticipantType.OWN_TEAM_MEMBERS_INCLUDING_SELF);
         updateRequest.setNumberOfEntitiesToGiveFeedbackToSetting(NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED);
+        updateRequest.setMinNumberOfEntitiesToGiveFeedbackToSetting(MinNumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED);
 
         updateRequest.setShowResponsesTo(new ArrayList<>());
         updateRequest.setShowGiverNameTo(new ArrayList<>());
